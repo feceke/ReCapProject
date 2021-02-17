@@ -15,20 +15,30 @@ namespace ConsoleUI
             //carManager1.Add(new Entities.Concrete.Car { Id = 4, BrandId = 3, ColorId = 3, DailyPrice = 300, ModelName = "Volkswagen Transporter", ModelYear = "2000", Description = "Dizel" });
 
 
-            // TÜM ARABALARI LİSTELEME
-            //ListCars();
-            //ListBrands();
-            //ListColors();
-
-            ListWithJoin();
+            
+            ListBrands();
+            ListColors();
+            CarTest();
         }
 
-        private static void ListWithJoin()
+        private static void CarTest()
         {
+            Console.WriteLine();
+            Console.WriteLine("Tüm Özellikler\n-------------------");
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarDetails())
+
+            var result = carManager.GetCarDetails();
+
+            if (result.Success==true)
             {
-                Console.WriteLine(car.BrandName + " " + car.CarName + " " + car.ColorName +" "+ car.DailyPrice+" "+car.Description);
+                foreach (var car in carManager.GetCarDetails().Data)
+                {
+                    Console.WriteLine(car.BrandName + " " + car.CarName + " " + car.ColorName + " " + car.DailyPrice + " " + car.Description);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
             }
         }
 
@@ -54,14 +64,5 @@ namespace ConsoleUI
             }
         }
 
-        private static void ListCars()
-        {
-            Console.WriteLine("Arabalar\n-----------");
-            CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetAll())
-            {
-                Console.WriteLine(car.ModelName + "\t" + car.ModelYear + "\t" + car.Description + "\t" + car.DailyPrice);
-            }
-        }
     }
 }
