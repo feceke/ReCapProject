@@ -6,7 +6,6 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Business.Concrete
 {
@@ -23,6 +22,7 @@ namespace Business.Concrete
             {
                 return new ErrorResult(Messages.CarNameInvalid);
             }
+            _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
         }
 
@@ -33,6 +33,10 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
+            if (DateTime.Now.Hour==23)
+            {
+                return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
+            }
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
         }
 

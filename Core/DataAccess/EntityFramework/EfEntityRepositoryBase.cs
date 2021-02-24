@@ -8,9 +8,9 @@ using System.Text;
 
 namespace Core.DataAccess.EntityFramework
 {
-    public class EfEntityRepositoryBase<TEntity, TContext>:IEntityRepository<TEntity>
-        where TEntity: class, IEntity, new()
-        where TContext : DbContext,new()
+    public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
+        where TEntity : class, IEntity, new()
+        where TContext : DbContext, new()
 
     {
         public void Add(TEntity entity)
@@ -40,12 +40,13 @@ namespace Core.DataAccess.EntityFramework
                 return context.Set<TEntity>().SingleOrDefault(filter);
             }
         }
+
         public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
             using (TContext context = new TContext())
             {
-                return filter == null 
-                    ? context.Set<TEntity>().ToList() 
+                return filter == null
+                    ? context.Set<TEntity>().ToList()
                     : context.Set<TEntity>().Where(filter).ToList();
             }
         }
@@ -57,7 +58,7 @@ namespace Core.DataAccess.EntityFramework
                 var updatedEntity = context.Entry(entity);
                 updatedEntity.State = EntityState.Modified;
                 context.SaveChanges();
-            };
+            }
         }
     }
 }
