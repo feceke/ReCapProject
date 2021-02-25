@@ -1,41 +1,41 @@
 ﻿CREATE TABLE Cars (
-Id int,
-BrandId int,
-ColorId int,
-ModelName varchar(255),
-ModalYear varchar(255),
-DailyPrice decimal,
-Description varchar(255),
+Id int null,
+BrandId int null,
+ColorId int null,
+ModelName varchar(255) null,
+ModalYear varchar(255) null,
+DailyPrice decimal null,
+Description varchar(255) null,
 );
 
 CREATE TABLE Brands (
-Id int,
-Name varchar(255),
+Id int null,
+Name varchar(255) null,
 );
 
 CREATE TABLE Colors(
-Id int,
-Name varchar(255),
+Id int null,
+Name varchar(255) null,
 );
 
 CREATE TABLE Customers (
-Id int,
-UserId int,
-CompanyName varchar(255)
+Id int null,
+UserId int null,
+CompanyName varchar(255) null
 );
 
 CREATE TABLE Rentals (
-Id int,
-CarId int,
-CustomerId int,
-RentDate date,
-ReturnDate date
+Id int null,
+CarId int null,
+CustomerId int null,
+RentDate date null,
+ReturnDate date null
 );
 
 CREATE TABLE Users(
-Id int,
-FirstName varchar(255),
-LastName varchar(255),
-Email varchar(255),
-Password varchar(21)
+Id int null,
+FirstName varchar(255) null,
+LastName varchar(255) null,
+Email varchar(255) null,
+Password varchar(21) null
 );

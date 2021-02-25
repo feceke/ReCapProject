@@ -10,16 +10,14 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-
-
-            CarTest();
-            Console.WriteLine();
-            ColorTest();
-            Console.WriteLine();
-            BrandTest();
-            Console.WriteLine();
-            CarDetailsTest();
-            Console.WriteLine();
+            //CarTest();
+            //Console.WriteLine();
+            //ColorTest();
+            //Console.WriteLine();
+            //BrandTest();
+            //Console.WriteLine();
+            //CarDetailsTest();
+            //Console.WriteLine();
 
 
             //UserAddTest();
@@ -27,15 +25,27 @@ namespace ConsoleUI
             //RentalAddTest();
 
 
-            Console.WriteLine();
-            UserTest();
-            Console.WriteLine();
-            CustomerTest();
-            Console.WriteLine();
-            RentalTest();
 
+            //Console.WriteLine();
+            //UserTest();
+            //Console.WriteLine();
+            //CustomerTest();
+            //Console.WriteLine();
+            //RentalTest();
 
+            //ZarOyunu();
+            
+        }
 
+        private static void ZarOyunu()
+        {
+            Func<int> dices = delegate ()
+            {
+                Random random = new Random();
+                return random.Next(0, 7);
+            };
+
+            Console.WriteLine("1. zar: " + dices() + "\n2. zar: " + dices());
         }
 
         private static void CarTest()
