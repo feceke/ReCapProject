@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Core.Utilities.Results;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -36,13 +38,13 @@ namespace Business.Concrete
 
         public IDataResult<List<Color>> GetCarsByColorId(int id)
         {
-            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(ci => ci.ColorId == id));
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(ci => ci.Id == id));
 
         }
 
         public IDataResult<List<Color>> GetCarsByColorName(string ColorName)
         {
-            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(cn => cn.ColorName == ColorName));
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(cn => cn.Name == ColorName));
         }
 
         public IResult Update(Color color)

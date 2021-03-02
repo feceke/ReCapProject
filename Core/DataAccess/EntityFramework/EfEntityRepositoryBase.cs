@@ -18,8 +18,7 @@ namespace Core.DataAccess.EntityFramework
             using (TContext context = new TContext())
             {
                 var addedEntity = context.Entry(entity);
-                addedEntity.State = EntityState.Added;
-                context.Add(entity);
+                addedEntity.State = EntityState.Added;               
                 context.SaveChanges();
             }
         }
@@ -34,7 +33,7 @@ namespace Core.DataAccess.EntityFramework
             }
         }
 
-        public TEntity Get(Expression<Func<TEntity, bool>> filter = null)
+        public TEntity Get(Expression<Func<TEntity, bool>> filter )
         {
             using (TContext context = new TContext())
             {

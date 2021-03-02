@@ -83,7 +83,7 @@ namespace ConsoleUI
             ColorManager colorManager = new ColorManager(new EfColorDal());
             foreach (var color in colorManager.GetAll().Data)
             {
-                Console.WriteLine("ColorId: {0} ColorName: {1}", color.ColorId, color.ColorName);
+                Console.WriteLine("ColorId: {0} ColorName: {1}", color.Id, color.Name);
             }
         }
 
