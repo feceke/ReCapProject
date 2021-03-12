@@ -108,7 +108,7 @@ namespace Business.Concrete
 
         private IResult CheckSameNameCar(string CarName)
         {
-            var result = _carDal.GetAll(c => c.Name == CarName).Any();
+            var result = _carDal.GetAll(c => c.ModelName == CarName).Any();
             if (result)
             {
                 return new ErrorResult(Messages.CarNameAlreadyExists);

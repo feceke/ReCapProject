@@ -44,7 +44,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Color>> GetCarsByColorName(string ColorName)
         {
-            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(cn => cn.Name == ColorName));
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(cn => cn.ColorName == ColorName));
         }
 
         public IResult Update(Color color)
