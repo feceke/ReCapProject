@@ -1,10 +1,10 @@
-﻿using Business.Abstract;
-using Business.Constants;
-using Core.Utilities.Results.Abstract;
-using Core.Utilities.Results.Concrete;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Business.Abstract;
+using Core.Entities.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using System.Collections.Generic;
 
 namespace Business.Concrete
 {
@@ -17,39 +17,19 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
-        public IResult Add(User user)
+        public List<OperationClaim> GetClaims(User user)
         {
-            return new SuccessResult(Messages.UserAdded);
+            return _userDal.GetClaims(user);
         }
 
-        public IResult Delete(User user)
+        public void Add(User user)
         {
-            return new SuccessResult(Messages.UserDeleted);
+            _userDal.Add(user);
         }
 
-        public IDataResult<List<User>> GetAll()
+        public User GetByMail(string email)
         {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.UsersListed);
-        }
-
-        public IDataResult<List<User>> GetUsersById(int id)
-        {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(u => u.Id == id));
-        }
-
-        public IDataResult<List<User>> GetUsersByUserFirstName(string FirstName)
-        {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(ufn => ufn.FirstName == FirstName));
-        }
-
-        public IDataResult<List<User>> GetUsersByUserLastName(string LastName)
-        {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(ln => ln.LastName == LastName));
-        }
-
-        public IResult Update(User user)
-        {
-            return new SuccessResult(Messages.UserUpdated);
+            return _userDal.Get(u => u.Email == email);
         }
     }
 }
